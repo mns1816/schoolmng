@@ -1,0 +1,54 @@
+<!-- TITLE -->
+<div class="mb-40 mt-40">
+    <h1>Exam Edit</h1>
+</div>
+<div class="card mb-40">
+    <div class="card-header">
+        <i class="fa fa-edit"></i> Edit
+    </div>
+    <div class="card-body">
+        <form #editForm="ngForm" [ngClass]="{'was-validated': formValid!=null}">
+            <div class="row justify-content-md-center">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label for="Score">Score *</label>
+                        <input type="number" class="form-control" id="Score" [(ngModel)]="item.Score" name="Score" #Score="ngModel" required>
+                        <div class="invalid-feedback">Value is required</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="place">Place *</label>
+                        <input type="text" class="form-control" id="place" [(ngModel)]="item.place" name="place" #place="ngModel" required>
+                        <div class="invalid-feedback">Value is required</div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="valid">Valid</label>
+                    </div>
+                    <!-- RELATIONS -->
+                    <h2 class="mb-20">Relations</h2>
+
+                    <label for="Course">Course</label>
+                    <select name="_Course" id="_Course" [(ngModel)]="item._Course" class="form-control" #_Course="ngModel"  >
+                        <option *ngFor="let item of list_Course" [value]="item._id">{{item._id}}</option>
+                    </select>
+                    <label for="Student">Student</label>
+                    <select name="_Student" id="_Student" [(ngModel)]="item._Student" class="form-control" #_Student="ngModel"  >
+                        <option *ngFor="let item of list_Student" [value]="item._id">{{item._id}}</option>
+                    </select>
+                    <label for="Teacher">Teacher</label>
+                    <select name="_Teacher" id="_Teacher" [(ngModel)]="item._Teacher" class="form-control" #_Teacher="ngModel"  >
+                        <option *ngFor="let item of list_Teacher" [value]="item._id">{{item._id}}</option>
+                    </select>
+
+                    
+        
+
+                    <!-- BUTTON BAR -->
+                    <div class="mt-40">
+                        <button class="btn btn-primary pull-right" (click)="save(editForm.valid, item)">Save</button>
+                        <button class="btn btn-secondary pull-right mr-2" (click)="goBack()">Back To List</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
